@@ -18,11 +18,11 @@ app_env: &app_env
 executors:
   ruby-node:
     docker:
-      - image: circleci/ruby:2.6.6-node
+      - image: cimg/ruby:2.6.6-node
         <<: *app_env
   ruby-node-postgres:
     docker:
-      - image: circleci/ruby:2.6.6-node
+      - image: cimg/ruby:2.6.6-node
         <<: *app_env
       - image: circleci/postgres:11-alpine
         environment:
@@ -72,7 +72,7 @@ jobs:
       - run:
           name: Check rails works
           command: bundle exec rails --version
-      
+
       - save_cache:
           key: Gemfile-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
