@@ -34,7 +34,8 @@ jobs:
 
   # Scan for vulnerabilities in ruby dependencies using bundler_audit
   ruby_dependency_scan:
-    executor: ruby-node
+    docker:
+      - image: circleci/ruby:2.6.6
     resource_class: small
     steps:
       - checkout
