@@ -200,7 +200,6 @@ workflows:
       - build_js
       - test_js:
           requires: 
-           - build_ruby
            - build_js
       - test_rails:
           requires:
