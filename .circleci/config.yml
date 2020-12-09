@@ -49,6 +49,13 @@ jobs:
 
   # Check for outdated orbs in this config
   outdated_orb_scan:
+    parameters:
+      config_file_location:
+        type: string
+        default: .circleci/config.yml
+      fail_on_unpinned:
+        type: boolean
+        default: true
     executor: circleci-cli/default
     resource_class: small
     steps:
@@ -64,8 +71,8 @@ jobs:
           name: Scanning .circleci/config.yml for outdated orbs
           command: |
             # Globals passed from parameters
-            CONFIG_FILE_LOCATION=".circleci/config.yml"
-            FAIL_ON_UNPINNED=true
+            CONFIG_FILE_LOCATION=<< parameters.config_file_location >>
+            FAIL_ON_UNPINNED=<< parameters.fail_on_unpinned >>
 
             # Color related vars
             RED='\033[0;31m'
